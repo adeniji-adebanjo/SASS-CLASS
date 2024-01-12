@@ -1,0 +1,50 @@
+// Define mixins
+@mixin button-styles($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@mixin card-styles {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+@mixin flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Use mixins in style rules
+.button {
+  @include button-styles(#3498db, #ffffff);
+}
+
+.card {
+  @include card-styles;
+}
+
+.container {
+  @include flex-container;
+
+  .inner-content {
+    @include button-styles(#2ecc71, #ffffff);
+    margin: 10px;
+  }
+}
+// Exercise 5
+@mixin card($bg-color) {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: $bg-color;
+}
+
+.custom-card {
+  @include card(#e9e9e9);
+  text-decoration: none;
+  display: inline-block;
+}

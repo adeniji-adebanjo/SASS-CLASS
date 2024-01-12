@@ -1,0 +1,61 @@
+@use "styleguide";
+
+// nav {
+//   ul {
+//     list-style-type: none;
+//     display: inline-flex;
+//     background-color: $h2color;
+//     font-size: $h2font;
+//   }
+//   li {
+//     margin: 30px;
+//     font-family: "Courier New", Courier, monospace;
+//   }
+//   a {
+//     margin: 20px;
+//   }
+// }
+
+// Global variables
+$color: blue;
+$size: 10px;
+
+@mixin box($color, $size) {
+  // Local variables
+  $padding: 5px !default; // Assigns a default value if not passed as an argument
+  $border: 1px solid $color !global; // Modifies the global variable $border
+  .box {
+    background-color: $color; // Uses the local variable $color
+    width: $size; // Uses the local variable $size
+    height: $size; // Uses the local variable $size
+    padding: $padding; // Uses the local variable $padding
+  }
+}
+@include box(red, 20px); // Passes arguments to the mixin
+.box {
+  color: $color; // Uses the global variable $color
+  border: $border; // Uses the global variable $border
+}
+
+// Define a mixin
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+// Use the mixin in a style rule
+.button {
+  @include border-radius(5px);
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+// Another style rule using the same mixin
+.card {
+  @include border-radius(10px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #ffffff;
+}
